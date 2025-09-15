@@ -15,11 +15,10 @@ import javax.swing.*;
 import java.time.Duration;
 
 public class GeneralTestMethods {
-    WebDriver driver;
+    WebDriver driver = Driver.getDriver();
 
     @Given("user is in main page")
     public void mainPage(){
-        driver = Driver.getDriver();
         driver.get("https://www.turkiye.gov.tr");
     }
 
@@ -43,5 +42,19 @@ public class GeneralTestMethods {
         Actions act = new Actions(driver);
         act.moveToElement(button).perform();
         button.click();
+    }
+
+    @When("user clicks login button")
+    public void loginButton(){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Giriş Yap"))).click();
+    }
+
+    @And("user enters their credentials tc: {string} password:{string}")
+    public void userEntersCredentials(String tc, String password){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tridField"))).sendKeys(tc);
+        driver.findElement(By.id("egpField")).sendKeys(password);
+        driver.findElement(By.name("submitButton")).click();
     }
 }
