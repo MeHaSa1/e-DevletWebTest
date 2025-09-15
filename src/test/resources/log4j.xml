@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <appender name="Console" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{HH:mm:ss}] %-5p %c{1} - %m%n"/>
+        </layout>
+    </appender>
+    <appender name="FileLogger" class="org.apache.log4j.FileAppender">
+        <param name="File" value="test-log.txt"/>
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p %c{1} - %m%n"/>
+        </layout>
+    </appender>
+    <logger name="tr.com.turksat.test" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="Console"/>
+        <appender-ref ref="FileLogger"/>
+    </logger>
+    <root>
+        <priority value="ERROR"/>
+        <appender-ref ref="Console"/>
+        <appender-ref ref="FileLogger"/>
+    </root>
+</configuration>

@@ -1,0 +1,23 @@
+[2025-09-15 17:05:50] INFO  GeneralTestMethods - User is in main page!
+[2025-09-15 17:05:51] INFO  GeneralTestMethods - User is searching for :Arsa Metrekare
+[2025-09-15 17:05:52] INFO  GeneralTestMethods - User is in Arsa Metrekare Birim Değeri Sorgulama (Maltepe Belediyesi) page!
+[2025-09-15 17:05:53] INFO  LandpriceTest - User filled area form!
+[2025-09-15 17:05:53] INFO  GeneralTestMethods - User clicked find button!
+[2025-09-15 17:05:54] INFO  LandpriceTest - User saw the pricing!
+[2025-09-15 17:06:00] INFO  GeneralTestMethods - User is in main page!
+[2025-09-15 17:06:00] INFO  GeneralTestMethods - User is searching for :Arsa Metrekare
+[2025-09-15 17:06:02] INFO  GeneralTestMethods - User is in Arsa Metrekare Birim Değeri Sorgulama (Maltepe Belediyesi) page!
+[2025-09-15 17:06:02] INFO  LandpriceTest - User filled area form!
+[2025-09-15 17:06:03] INFO  GeneralTestMethods - User clicked find button!
+[2025-09-15 17:06:04] INFO  LandpriceTest - User saw the pricing!
+[2025-09-15 17:06:10] INFO  GeneralTestMethods - User is in main page!
+[2025-09-15 17:06:10] INFO  GeneralTestMethods - User is searching for :Nöbetçi Eczane
+[2025-09-15 17:06:27] INFO  GeneralTestMethods - User is in main page!
+[2025-09-15 17:06:27] INFO  GeneralTestMethods - User is searching for :Nöbetçi Eczane
+[2025-09-15 17:06:28] INFO  GeneralTestMethods - User is in Nöbetçi Eczane page!
+[2025-09-15 17:06:29] INFO  PharmacyTest - User entered district info!
+[2025-09-15 17:06:29] INFO  PharmacyTest - User entered date info!
+[2025-09-15 17:06:29] INFO  GeneralTestMethods - User clicked find button!
+[2025-09-15 17:06:29] INFO  PharmacyTest - User saw the pharmacies!
+[2025-09-15 17:06:34] INFO  GeneralTestMethods - User is in main page!
+[2025-09-15 17:06:57] INFO  GeneralTestMethods - User clicked login button!

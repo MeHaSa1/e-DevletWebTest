@@ -11,8 +11,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import tr.com.turksat.runner.Driver;
 
 import java.time.Duration;
+import org.apache.log4j.Logger;
 
 public class LandpriceTest {
+    private static final Logger logger = Logger.getLogger(LandpriceTest.class);
     WebDriver driver = Driver.getDriver();
 
     @When("user fills the form with values {string} {string} {string}")
@@ -23,6 +25,7 @@ public class LandpriceTest {
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector("#caddesokak option"),1));
         new Select(driver.findElement(By.id("caddesokak"))).selectByVisibleText(street);
         new Select(driver.findElement(By.id("yil"))).selectByVisibleText(year);
+        logger.info("User filled area form!");
     }
 
     @Then("user should see at least one land pricing")
@@ -30,5 +33,6 @@ public class LandpriceTest {
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         WebElement searchTable = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[caption[text()='Arsa Rayiç Değer Bilgisi']]")));
         if(searchTable.findElements(By.tagName("tr")).isEmpty()) throw new AssertionError("Pricing not found!");
+        logger.info("User saw the pricing!");
     }
 }
