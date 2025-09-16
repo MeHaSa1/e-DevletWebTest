@@ -14,7 +14,7 @@ public class Driver {
     public static WebDriver getDriver(){
         if(driver == null){
             try {
-                URL url = new URL("http://172.17.0.2:4444");
+                URL url = new URL("http://172.18.0.3:4444");
                 ChromeOptions opt = new ChromeOptions();
                 opt.addArguments("--headless");
                 opt.addArguments("--no-sandbox");
