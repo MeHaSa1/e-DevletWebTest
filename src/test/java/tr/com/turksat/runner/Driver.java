@@ -15,7 +15,11 @@ public class Driver {
         if(driver == null){
             try {
                 URL url = new URL("http://172.17.0.2:4444/wd/hub");
-                driver = new RemoteWebDriver(url, new ChromeOptions());
+                ChromeOptions opt = new ChromeOptions();
+                opt.addArguments("--headless");
+                opt.addArguments("--no-sandbox");
+                opt.addArguments("--disable-dev-shm-usage");
+                driver = new RemoteWebDriver(url, opt);
                 driver.manage().window().maximize();
             }
             catch (Exception e){
