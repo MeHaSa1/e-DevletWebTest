@@ -13,16 +13,14 @@ import tr.com.turksat.runner.Driver;
 
 import javax.swing.*;
 import java.time.Duration;
-import org.apache.log4j.Logger;
 
 public class GeneralTestMethods {
-    private static final Logger logger = Logger.getLogger(GeneralTestMethods.class);
     WebDriver driver = Driver.getDriver();
 
     @Given("user is in main page")
     public void mainPage(){
         driver.get("https://www.turkiye.gov.tr");
-        logger.info("User is in main page!");
+        Logging.info("User is in main page!");
     }
 
     @When("user searches for {string} service")
@@ -30,7 +28,7 @@ public class GeneralTestMethods {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         WebElement searchField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("searchField")));
         searchField.sendKeys(service);
-        logger.info("User is searching for :" + service);
+        Logging.info("User is searching for :" + service);
     }
 
     @And("user goes to the {string} page recommended to them")
@@ -38,7 +36,7 @@ public class GeneralTestMethods {
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         WebElement recommended = wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText(page)));
         recommended.click();
-        logger.info("User is in "+ page + " page!");
+        Logging.info("User is in "+ page + " page!");
     }
 
     @And("user clicks find button")
@@ -47,14 +45,14 @@ public class GeneralTestMethods {
         Actions act = new Actions(driver);
         act.moveToElement(button).perform();
         button.click();
-        logger.info("User clicked find button!");
+        Logging.info("User clicked find button!");
     }
 
     @When("user clicks login button")
     public void loginButton(){
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Giriş Yap"))).click();
-        logger.info("User clicked login button!");
+        Logging.info("User clicked login button!");
     }
 
     @And("user enters their credentials tc: {string} password:{string}")
@@ -63,6 +61,6 @@ public class GeneralTestMethods {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tridField"))).sendKeys(tc);
         driver.findElement(By.id("egpField")).sendKeys(password);
         driver.findElement(By.name("submitButton")).click();
-        logger.info("User entered ID and password!");
+        Logging.info("User entered ID and password!");
     }
 }
