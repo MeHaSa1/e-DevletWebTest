@@ -14,7 +14,7 @@ public class Driver {
     public static WebDriver getDriver(){
         if(driver == null){
             try {
-                URL url = new URL("http://172.17.0.2:4444");
+                URL url = new URL("http://172.17.0.2:4444/wd/hub");
                 driver = new RemoteWebDriver(url, new ChromeOptions());
                 driver.manage().window().maximize();
             }
