@@ -1,5 +1,3 @@
-import groovy.json.JsonSlurper
-
 pipeline {
     agent any
 
@@ -30,18 +28,16 @@ pipeline {
             steps {
                 script {
                     def summary = readJSON file: 'allure-report/widgets/summary.json'
-                    def resultsdir = new File("${WORKSPACE}/allure-results")
+                    def resultsfiles = findFiles(glob: 'allure-results/*result.json')
                     def failedtests = []
-                    for(file in resultsdir.listFiles()) {
-                        if(file.name.endsWith('result.json')) {
-                            def json = new groovy.json.JsonSlurper().parse(file)
-                            if(json.status == "failed" || json.status == "broken") {
-                                failedtests << [
-                                    suite: json.labels?.find { it.name == "suite" }?.value ?: "Unknown Suite",
-                                    scenario: json.name,
-                                    status: json.status
-                                ]
-                            }
+                    for(file in resultsfiles) {
+                        def json = readJSON file: file.path
+                        if(json.status == "failed" || json.status == "broken") {
+                        failedtests << [
+                            suite: json.labels?.find { it.name == "suite" }?.value ?: "Unknown Suite",
+                            scenario: json.name,
+                            status: json.status
+                            ]
                         }
                     }
                     def resultMessage = "Failed cases found!"
